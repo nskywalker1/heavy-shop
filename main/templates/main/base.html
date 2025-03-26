@@ -13,7 +13,34 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-
+<header class="sticky-top">
+    <div class="header-container d-flex">
+        <navbar class="header-nav pt-4">
+            <ul class="header-list d-flex">
+            </ul>
+            <li>
+                <a href="/" class="nav-a m-3">Home</a>
+            </li>
+            <li>
+                <a href="#" class="nav-a m-3">Shop</a>
+            </li>
+        </navbar>
+        <div class="header-logo">
+            <a href="/"><img src="{% static 'logo.img' %}" alt="" class="heavy-logo"></a>
+        </div>
+        <div class="header-profile">
+            <a href="#" class="m-3">LOGIN</a>
+        </div>
+    </div>
+</header>
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+<img src="{% static 'img/frame1.png' %}" class="frame1">
+<img src="{% static 'img/frame2.png' %}" class="frame2">
+<img src="{% static 'img/frame3.png' %}" class="frame3">
+<img src="{% static 'img/frame4.png' %}" class="frame4">
 {% comment %} js for bootstrap {% endcomment %}
 <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
