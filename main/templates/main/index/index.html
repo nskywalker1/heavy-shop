@@ -1,13 +1,36 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'main/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <section class="home d-flex flex-column">
+        <div class="home-title d-flex flex-column">
+            <a href="#" class="home-btn mt-4">ALL PRODUCTS</a>
+        </div>
+        <div class="home-recommendation">
+            <div class="rec-title">
+                <h3><span>Popular Accessories</span></h3>
+            </div>
+        </div>
+        <div class="home-cards">
+            {% for product in products %}
+                <a href="{{  product.get_absolute_url }}" class="home-card">
+                    <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/noimage.jpg' %} {% endif %}"
+                         class="card-img">
+                    <h5 class="title-card">{{ product.name }}</h5>
+                    {% if product.discount %}
+                        <div class="card-discount">
+                            <p class="line">{{ product.price }}</p>
+                            <p>{{ product.sell_price }}</p>
+                        </div>
+                    {% else %}
+                        <p class="price">{{ product.price }}</p>
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+    <img src="{% static 'img/logogot.png' %}" class="logogothic">
+    <img src="{% static 'img/subtitlee.png' %}" class="subtitlee">
+{% endblock %}
