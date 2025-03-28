@@ -15,15 +15,15 @@
 <header class="header sticky-top">
     <div class="header-container d-flex">
         <navbar class="header-nav pt-4">
-                <ul class="header-list d-flex">
-                    <li>
-                        <a href="/" class="nav-a m-3">Home</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-a m-3">Shop</a>
-                    </li>
-                </ul>
-            </navbar>
+            <ul class="header-list d-flex">
+                <li>
+                    <a href="/" class="nav-a m-3">Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'main:product_list' %}" class="nav-a m-3">Shop</a>
+                </li>
+            </ul>
+        </navbar>
         <div class="header-logo">
             <a href="/"><img src="{% static 'img/logo.png' %}" alt="" class="heavy-logo"></a>
         </div>
