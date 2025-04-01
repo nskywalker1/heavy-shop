@@ -106,9 +106,8 @@ h5 {
 }
 
 .price {
-    font-size: 20px;
-    font-weight: 700;
-    margin-top: -10px;
+    font-size: 11px;
+    font-weight: 600;
 }
 
 .home-btn {
@@ -199,7 +198,7 @@ h5 {
 }
 
 .cart-discount .price {
-    margin-top: -1px;
+    margin-top: 1px;
 }
 
 .line {
