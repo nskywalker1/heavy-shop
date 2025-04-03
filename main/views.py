@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product, Category
 from cart.forms import CartAddProductForm
 
+
 def popular_list(request):
     products = Product.objects.filter(available=True)[:3]
     return render(request,
