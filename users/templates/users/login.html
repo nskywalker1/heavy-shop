@@ -1,44 +1,55 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}
-    Login
-{% endblock %}
+{% block title %}Login{% endblock title %}
 
 {% block content %}
-    <section class="login d-flex">
+    <section class="d-flex justify-content-center mt-5">
         <div class="login-title">
             <h2>Login</h2>
-            <form action="{% url 'user:login' %}" method="post">
-                {% csrf_token %}
-                {% if request.GET.next %}
-                    <input type="hidden" name="next" value="{{ request.GET.next }}">
-                {% endif %}
-                <div class="mb-3">
-                    <label for="id_username" class="form-label form-style">Username</label>
-                    <input
-                            type="text"
-                            class="form-control form-style"
-                            value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
-                            name="username"
-                            id="id_username"
-                            placeholder="Input username"
-                            required
-                    >
+            <form action="{% url "user:login" %}" method="post">
+    {% csrf_token %}
+    {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+    {% endif %}
+
+    {% if form.non_field_errors %}
+        <div class="form-style text-danger mb-3">
+            {{ form.non_field_errors.0 }}
+        </div>
+    {% endif %}
+
+    <div class="mb-3">
+        <label for="id_username" class="form-label form-style">Username</label>
+        <input type="text" class="form-control form-style"
+               value="{{ form.username.value|default_if_none:'' }}"
+               name="username" id="id_username" placeholder="Input username" required>
+        {% if form.username.errors %}
+            <div class="text-danger small mt-1 form-style">
+                {{ form.username.errors.0 }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="mb-3">
+        <label for="id_password" class="form-label form-style">Password</label>
+        <input type="password" class="form-control form-style"
+               name="password" id="id_password" placeholder="Your password" required>
+        {% if form.password.errors %}
+            <div class="text-danger small mt-1 form-style">
+                {{ form.password.errors.0 }}
+            </div>
+        {% endif %}
+    </div>
+
+    <button type="submit" class="login-btn form-style">Login</button>
+</form>
+            <div class="reset-pass">
+                <hr>
+                <div class="mt-3">
+                    <a href="#">Reset Password</a> | <a href="{% url "user:registration" %}">Create Account</a>
                 </div>
-                <div class="mb-3">
-                    <label for="id_password" class="form-label form-style">Password</label>
-                    <input
-                            type="text"
-                            class="form-control form-style"
-                            name="password"
-                            id="id_password"
-                            placeholder="Input password"
-                            required
-                    >
-                </div>
-                <button type="submit" class="login-btn form-style">Login</button>
-            </form>
+            </div>
         </div>
     </section>
-{% endblock %}
+{% endblock content %}
