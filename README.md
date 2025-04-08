@@ -21,9 +21,10 @@ This project is my first store on django framework. Just an accessory store with
    - For Mac/Linux: `source venv/bin/activate`
    - For Windows: `venv\scripts\activate`
 6. Install the application requirements by running: `pip install -r requirements.txt`
-7. Migrate the database by executing: `python managa.py migrate`
-8. Start server: `python manage.py runserver`
-9. You should now be able to access the application by visiting: http://127.0.0.1:8000/
+7. Fill in the fields in the settings.py file linked to the Postgresql database(HOST, USER, PASSWORD, etc.)
+8. Migrate the database by executing: `python managa.py migrate`
+9. Start server: `python manage.py runserver`
+10. You should now be able to access the application by visiting: http://127.0.0.1:8000/
 
 ## Creating a Superuser
 
